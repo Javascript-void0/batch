@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Batch.DeckFormPage"
+			 Title="New Deck">
+	<NavigationPage.TitleView>
+		<Label x:Name="titleDeckName" Text="New Deck" FontSize="20" FontFamily="Jost" TextColor="#efefef" LineBreakMode="TailTruncation"/>
+	</NavigationPage.TitleView>
+
+	<ContentPage.Content>
+		<AbsoluteLayout BackgroundColor="#efefef">
+			<BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 1, 0.1" AbsoluteLayout.LayoutFlags="All"
+					 BackgroundColor="{DynamicResource BackgroundColor}"/>
+			<StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, 1" AbsoluteLayout.LayoutFlags="All">
+				<ScrollView VerticalOptions="FillAndExpand" x:Name="scrollView">
+					<StackLayout>
+						<Frame Margin="20, 20, 20, 20" HeightRequest="300" Padding="0" CornerRadius="10">
+							<StackLayout>
+								<Frame BackgroundColor="{DynamicResource BackgroundColor2}" HeightRequest="65" Padding="0" CornerRadius="0">
+									<Label Text="Deck Details" VerticalOptions="Center" Padding="20, 0" FontFamily="Jost"
+										   FontAttributes="Bold" FontSize="20" TextColor="White"/>
+								</Frame>
+								<StackLayout Padding="20">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="75"/>
+											<ColumnDefinition Width="*"/>
+										</Grid.ColumnDefinitions>
+										<Label Grid.Column="0" Text="Name: " FontSize="20" VerticalOptions="Center" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold" HorizontalOptions="Start" FontFamily="JostBold"/>
+										<Entry Grid.Column="1" x:Name="deckName" Placeholder="New Deck 1" TextColor="{DynamicResource BackgroundColor}" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" FontFamily="Jost"/>
+									</Grid>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="75"/>
+											<ColumnDefinition Width="*"/>
+										</Grid.ColumnDefinitions>
+										<Label Grid.Column="0" Text="Tags: " FontSize="20" VerticalOptions="Center" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold" FontFamily="JostBold"/>
+										<Entry Grid.Column="1" x:Name="deckTags" Placeholder="tag1, tag2, tag3" TextColor="{DynamicResource BackgroundColor}" PlaceholderColor="Gray" FontFamily="Jost"/>
+									</Grid>
+									<Button Text="Delete Deck" HorizontalOptions="End" Clicked="DeleteDeckButtonClicked" IsVisible="False" x:Name="deleteDeckButton" FontFamily="Jost"
+											WidthRequest="150" BackgroundColor="White" TextColor="{DynamicResource BackgroundColor2}" FontAttributes="Bold"/>
+								</StackLayout>
+							</StackLayout>
+						</Frame>
+						
+						<StackLayout x:Name="cards">
+							<Frame Margin="20, 0, 20, 20" HeightRequest="200" CornerRadius="10">
+								<StackLayout>
+									<Label Text="Card 1" TextColor="{DynamicResource BackgroundColor2}" FontSize="20" FontAttributes="Bold" FontFamily="Jost"/>
+									<BoxView Style="{StaticResource Separator}"/>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="Side1: " FontSize="20" VerticalOptions="Center" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold" HorizontalOptions="Start" FontFamily="JostBold"/>
+										<Entry Placeholder="Word" TextColor="{DynamicResource BackgroundColor}" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" FontFamily="Jost"/>
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="Side2: " FontSize="20" VerticalOptions="Center" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold" HorizontalOptions="Start" FontFamily="JostBold"/>
+										<Entry Placeholder="Definition" TextColor="{DynamicResource BackgroundColor}" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" FontFamily="Jost"/>
+									</StackLayout>
+								</StackLayout>
+							</Frame>
+						</StackLayout>
+
+						<!--add card-->
+						<Button Grid.Column="2" x:Name="addCardButton" Text="+ Add Card" FontSize="15" FontAttributes="Bold" TextTransform="None"
+								Margin="20, 0" HorizontalOptions="End" Clicked="newCardClicked" FontFamily="Jost"
+								BackgroundColor="#efefef" TextColor="{DynamicResource BackgroundColor}"/>
+
+						<!--padding bottom-->
+						<BoxView x:Name="bottom" HeightRequest="400" BackgroundColor="Transparent"/>
+					</StackLayout>
+				</ScrollView>
+			</StackLayout>
+
+			<ImageButton x:Name="saveDeckButton" Clicked="saveButtonClicked"
+						 AbsoluteLayout.LayoutBounds="0.95, 0.95, 80, 80" AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0"
+						 CornerRadius="100" Padding="23" BackgroundColor="{DynamicResource BackgroundColor2}"/>
+
+		</AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Batch.Views.DeckDetailView"
+			 Title="">
+	<NavigationPage.TitleView>
+		<StackLayout Orientation="Horizontal">
+			<Label x:Name="titleDeckName" Text="Deck Name" FontSize="20" FontFamily="Jost" TextColor="#efefef" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation"/>
+			<Label x:Name="numCards" Text="12 Cards" FontSize="20" FontFamily="Jost" TextColor="#efefef" HorizontalOptions="End" HorizontalTextAlignment="end" Padding="0, 0, 20, 0" WidthRequest="200"/>
+		</StackLayout>
+	</NavigationPage.TitleView>
+
+	<ContentPage.Content>
+		<StackLayout BackgroundColor="#efefef">
+			<ListView x:Name="cardsList" ItemsSource="{Binding Cards}" HasUnevenRows="True" VerticalScrollBarVisibility="Never"
+				  VerticalOptions="FillAndExpand" Margin="20">
+
+				<ListView.Header>
+					<StackLayout>
+						<Frame HeightRequest="140" BackgroundColor="White" CornerRadius="10" HasShadow="False">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+								<Button Grid.Column="0" Grid.Row="0" CornerRadius="10" BackgroundColor="{DynamicResource BackgroundColor2}" FontFamily="Jost"
+										Text="Review" FontAttributes="Bold" Clicked="ReviewClicked"/>
+								<Button Grid.Column="1" Grid.Row="0" CornerRadius="10" BackgroundColor="{DynamicResource BackgroundColor2}" FontFamily="Jost"
+										Text="Rename" FontAttributes="Bold" Clicked="RenameClicked"/>
+								<Button Grid.Column="0" Grid.Row="1" CornerRadius="10" BackgroundColor="{DynamicResource BackgroundColor2}" FontFamily="Jost"
+										Text="Tags" FontAttributes="Bold" Clicked="TagsClicked"/>
+								<Button Grid.Column="1" Grid.Row="1" CornerRadius="10" BackgroundColor="{DynamicResource BackgroundColor}" FontFamily="Jost"
+										Text="Edit" FontAttributes="Bold" Clicked="EditClicked"/>
+							</Grid>
+						</Frame>
+						<Grid Margin="0, 20, 0, 0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="10"/>
+								<ColumnDefinition Width="80"/>
+							</Grid.ColumnDefinitions>
+							<Frame HeightRequest="40" BackgroundColor="White" CornerRadius="10" HasShadow="False">
+								<SearchBar TextColor="{DynamicResource BackgroundColor}" CancelButtonColor="{DynamicResource BackgroundColor}" FontFamily="Jost"
+										   Placeholder="Search" TextChanged="CardSearchChanged" x:Name="searchBar"/>
+							</Frame>
+							<ImageButton Grid.Column="2" Style="{DynamicResource SortIcon}" Clicked="SortClicked"
+										 CornerRadius="10" BackgroundColor="White" Padding="25"/>
+						</Grid>
+					</StackLayout>
+				</ListView.Header>
+
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Frame VerticalOptions="FillAndExpand" CornerRadius="10" Margin="0, 20, 0, 0" HasShadow="False">
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="2"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+									<Label Grid.Column="0" Text="{Binding Side1}" FontSize="18" TextColor="{DynamicResource BackgroundColor}" VerticalOptions="Center" HorizontalOptions="Center" Padding="0, 0, 10, 0" FontFamily="Jost"/>
+									<BoxView Grid.Column="1" BackgroundColor="{DynamicResource BackgroundColor2}"/>
+									<Label Grid.Column="2" Text="{Binding Side2}" FontSize="18" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Italic" VerticalOptions="Center" HorizontalOptions="Center" Padding="10, 0, 0, 0" FontFamily="Jost"/>
+								</Grid>
+							</Frame>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+
+				<ListView.Footer>
+					<BoxView BackgroundColor="Transparent" HeightRequest="40"/>
+				</ListView.Footer>
+				
+			</ListView>
+
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

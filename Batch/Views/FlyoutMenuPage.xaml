@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Batch.Views.FlyoutMenuPage"
+             xmlns:local="using:Batch.Models"
+			 xmlns:views="using:Batch.Views"
+             Title="Flyout">
+	<StackLayout BackgroundColor="{DynamicResource BackgroundColor}">
+
+		<!-- top -->
+		<ListView x:Name="listView" x:FieldModifier="public" RowHeight="60" VerticalOptions="Start" HeightRequest="350"
+				  BackgroundColor="{DynamicResource BackgroundColor}" SeparatorVisibility="None">
+			<ListView.Header>
+				<StackLayout BackgroundColor="{DynamicResource BackgroundColor}" Padding="40, 70, 40, 10">
+					<Label Text="BATCH" FontSize="30" FontFamily="Jost"/>
+					<BoxView  Margin="0" Style="{StaticResource Separator}"/>
+				</StackLayout>
+				</ListView.Header>
+			<ListView.ItemsSource>
+				<x:Array Type="{x:Type local:FlyoutPageItem}">
+					<local:FlyoutPageItem Title="Home" TargetType="{x:Type views:HomePage}"/>
+					<local:FlyoutPageItem Title="About" TargetType="{x:Type views:AboutPage}"/>
+					<local:FlyoutPageItem Title="Export" TargetType="{x:Type views:ExportPage}"/>
+				</x:Array>
+			</ListView.ItemsSource>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Label Text="{Binding Title}" TextTransform="Uppercase" 
+							   FontAttributes="Bold" TextColor="White" FontSize="13"
+							   Padding="40, 20, 20, 20" FontFamily="Jost"/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+			
+		<!-- recent -->
+		<ListView x:Name="recentDecks" x:FieldModifier="public" RowHeight="60" VerticalOptions="FillAndExpand"
+				  BackgroundColor="{DynamicResource BackgroundColor}" SeparatorVisibility="None">
+			<ListView.Header>
+				<StackLayout BackgroundColor="{DynamicResource BackgroundColor}" Padding="40, 10">
+					<Label Text="RECENT" FontSize="30" FontFamily="Jost"/>
+					<BoxView  Margin="0" Style="{StaticResource Separator}"/>
+				</StackLayout>
+			</ListView.Header>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Label Text="{Binding Name}" TextTransform="Uppercase" 
+							   FontAttributes="Bold" TextColor="White" FontSize="13"
+							   Padding="40, 20, 20, 20" FontFamily="Jost"/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+		<!-- settings -->
+		<ListView x:Name="settings" x:FieldModifier="public" RowHeight="60" VerticalOptions="End" HeightRequest="120"
+				  BackgroundColor="{DynamicResource BackgroundColor}" SeparatorVisibility="None">
+
+			<ListView.ItemsSource>
+				<x:Array Type="{x:Type local:FlyoutPageItem}">
+					<local:FlyoutPageItem Title="Settings" TargetType="{x:Type views:SettingsPage}"/>
+				</x:Array>
+			</ListView.ItemsSource>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Label Text="{Binding Title}" TextTransform="Uppercase" 
+							   FontAttributes="Bold" TextColor="White" FontSize="13"
+							   Padding="40, 20, 20, 20" FontFamily="Jost"/>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		
+	</StackLayout>
+
+</ContentPage>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Batch.Views.DeckReviewPage"
+			 xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+			 xmlns:tt="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
+			 Title="Review: "
+			 NavigationPage.HasNavigationBar="False"
+			 x:Name="currentPage">
+	<ContentPage.Resources>
+		<DataTemplate x:Key="Flip">
+			<AbsoluteLayout Padding="20">
+				<Frame Background="White" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+					<Frame.GestureRecognizers>
+						<TapGestureRecognizer Tapped="FlipCard"/>
+					</Frame.GestureRecognizers>
+					<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+						<StackLayout IsVisible="False" StyleId="Side1">
+							<Label Text="{Binding Side1}" TextColor="{DynamicResource BackgroundColor}" HorizontalTextAlignment="Center"
+								   FontFamily="Jost" FontSize="30"/>
+						</StackLayout>
+						<StackLayout StyleId="Side2">
+							<Label Text="{Binding Side2}" TextColor="{DynamicResource BackgroundColor}" HorizontalTextAlignment="Center"
+								   FontFamily="Jost" FontSize="30"/>
+						</StackLayout>
+					</StackLayout>
+				</Frame>
+			</AbsoluteLayout>
+		</DataTemplate>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+		<AbsoluteLayout>
+			<Grid x:Name="grid" Background="#efefef" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="475"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<CarouselView Grid.Column="0" x:Name="cardCarousel" PeekAreaInsets="10" VerticalOptions="Center" CurrentItemChanged="CardChanged" Loop="False">
+					<CarouselView.ItemTemplate>
+						<DataTemplate>
+							<AbsoluteLayout Padding="20">
+								<Frame Background="White" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" BindingContext="{Binding .}">
+									<Frame.GestureRecognizers>
+										<TapGestureRecognizer Tapped="FlipCard"/>
+									</Frame.GestureRecognizers>
+									<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+										<StackLayout>
+											<Label Text="{Binding Side1}" TextColor="{DynamicResource BackgroundColor}" HorizontalTextAlignment="Center"
+											   FontFamily="Jost" FontSize="30"/>
+										</StackLayout>
+										<StackLayout IsVisible="False">
+											<Label Text="{Binding Side2}" TextColor="{DynamicResource BackgroundColor}" HorizontalTextAlignment="Center"
+											   FontFamily="Jost" FontSize="30"/>
+										</StackLayout>
+									</StackLayout>
+								</Frame>
+							</AbsoluteLayout>
+						</DataTemplate>
+					</CarouselView.ItemTemplate>
+				</CarouselView>
+
+				<Frame Grid.Column="1" BackgroundColor="White" Padding="0">
+					<skia:SKCanvasView x:Name="canvasView" PaintSurface="OnCanvasViewPaintSurface"/>
+					<Frame.Effects>
+						<tt:TouchEffect Capture="True" TouchAction="OnTouchEffectAction"/>
+					</Frame.Effects>
+				</Frame>
+
+			</Grid>
+
+			<!--floating button(s)-->
+			<Button x:Name="newDeckButton" Text="+" FontSize="35" FontAttributes="Bold" FontFamily="Jost"
+					AbsoluteLayout.LayoutBounds="0.95, 0.95, 80, 80" AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0"
+					CornerRadius="100" Padding="0, 0, 0, 5" BackgroundColor="{DynamicResource BackgroundColor2}"/>
+
+		</AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

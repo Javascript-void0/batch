@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Batch.Views.SettingsPage">
+	<ContentPage.Content>
+		<StackLayout x:Name="test" BackgroundColor="{DynamicResource BackgroundColor}">
+			<BoxView BackgroundColor="{DynamicResource BackgroundColor2}" HeightRequest="380"/>
+			<StackLayout Margin="35" VerticalOptions="StartAndExpand">
+
+				<Label Text="Settings" Style="{DynamicResource Header}" FontFamily="Jost"/>
+				<BoxView Style="{StaticResource Separator}"/>
+				<StackLayout Padding="15">
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Always Shuffle" FontSize="17" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+                               VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+						<CheckBox x:Name="option1" HorizontalOptions="End" Color="{DynamicResource TextColor}" CheckedChanged="OptionChanged"/>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Confirm Delete?" FontSize="17" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+                               VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+						<CheckBox x:Name="option2" HorizontalOptions="End" Color="{DynamicResource TextColor}" CheckedChanged="OptionChanged"/>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Landscape Review Page (Enable Canvas)" FontSize="17" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+                               VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+						<CheckBox x:Name="option3" HorizontalOptions="End" Color="{DynamicResource TextColor}" CheckedChanged="OptionChanged"/>
+					</StackLayout>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Left-Handed Mode" FontSize="17" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+                               VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+						<CheckBox x:Name="option4" HorizontalOptions="End" Color="{DynamicResource TextColor}" CheckedChanged="OptionChanged"/>
+					</StackLayout>
+				</StackLayout>
+
+				<Label Text="Pen Thickness" Style="{DynamicResource Header}" FontFamily="Jost"/>
+				<BoxView Style="{StaticResource Separator}"/>
+				<StackLayout>
+					<Grid HeightRequest="80">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="80"/>
+						</Grid.ColumnDefinitions>
+						<Slider x:Name="penSizeSlider" 
+								ThumbColor="{DynamicResource TextColor}" 
+								MinimumTrackColor="{DynamicResource TextColor}"
+								MaximumTrackColor="{DynamicResource BackgroundColor2}"
+								Grid.Column="0" Maximum="15" Minimum="5" Value="10"
+								ValueChanged="OptionChanged"/>
+						<BoxView BackgroundColor="{DynamicResource TextColor}" CornerRadius="100" Grid.Column="1" BindingContext="{x:Reference Name=penSizeSlider}"
+                                 HeightRequest="{Binding Value}" WidthRequest="{Binding Value}" HorizontalOptions="Center" VerticalOptions="Center"/>
+					</Grid>
+				</StackLayout>
+
+				<Label Text="Theme" Style="{DynamicResource Header}" FontFamily="Jost"/>
+				<BoxView Style="{StaticResource Separator}"/>
+				<StackLayout>
+					<Grid HeightRequest="70" RowSpacing="10" ColumnSpacing="10" Padding="15, 0, 15, 15">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Button CornerRadius="5" BackgroundColor="{StaticResource Theme12}" Clicked="ThemeChanged" BindingContext="1"
+                                Grid.Column="0" Grid.Row="0"/>
+						<Button CornerRadius="5" BackgroundColor="{StaticResource Theme22}" Clicked="ThemeChanged" BindingContext="2"
+                                Grid.Column="1" Grid.Row="0"/>
+						<Button CornerRadius="5" BackgroundColor="{StaticResource Theme32}" Clicked="ThemeChanged" BindingContext="3"
+                                Grid.Column="2" Grid.Row="0"/>
+						<Button CornerRadius="5" BackgroundColor="{StaticResource Theme42}" Clicked="ThemeChanged" BindingContext="4"
+                                Grid.Column="3" Grid.Row="0"/>
+						<Button CornerRadius="5" BackgroundColor="{StaticResource Theme52}" Clicked="ThemeChanged" BindingContext="5"
+                                Grid.Column="4" Grid.Row="0"/>
+					</Grid>
+				</StackLayout>
+
+			</StackLayout>
+			<Grid HeightRequest="60" Margin="35, 0, 35, 35" VerticalOptions="End">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Button Grid.Column="0" Text="Default" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+						BackgroundColor="{DynamicResource BackgroundColor2}" Clicked="DefaultSettings"/>
+				<Button Grid.Column="1" x:Name="saveButton" Text="Save" TextColor="{DynamicResource TextColor}" FontFamily="Jost"
+						BackgroundColor="{DynamicResource BackgroundColor2}" Clicked="SaveSettings"/>
+			</Grid>
+
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

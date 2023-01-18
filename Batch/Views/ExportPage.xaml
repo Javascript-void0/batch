@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Batch.Views.ExportPage"
+			 BackgroundColor="{DynamicResource BackgroundColor2}">
+    <ContentPage.Content>
+        <StackLayout>
+			<Frame BackgroundColor="{DynamicResource BackgroundColor}" CornerRadius="0" Padding="0">
+				<Label Text="Export Data" FontFamily="Jost" FontSize="30" Padding="20, 0, 0, 20" TextColor="White"/>
+			</Frame>
+
+			<Label Text="idk doesn't work" FontFamily="Jost"/>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

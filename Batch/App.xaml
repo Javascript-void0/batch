@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:src="clr-namespace:Batch.ViewModels"
+             x:Class="Batch.App">
+    <Application.Resources>
+		<ResourceDictionary>
+			<Color x:Key="BackgroundColor">#40263e</Color>
+			<Color x:Key="BackgroundColor2">#663c63</Color>
+			<Color x:Key="Text Color">#efefef</Color>
+			<Style x:Key="ShuffleIcon" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle5.png}"/>
+			</Style>
+			<Style x:Key="EditIcon" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit5.png}"/>
+			</Style>
+			<Style x:Key="SortIcon" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort5.png}"/>
+			</Style>
+
+			<Color x:Key="Theme1">#3d5373</Color>
+			<Color x:Key="Theme12">#5979a6</Color>
+			<Color x:Key="Theme1Text">#efefef</Color>
+			<Style x:Key="Theme1Shuffle" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle1.png}"/>
+			</Style>
+			<Style x:Key="Theme1Edit" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit1.png}"/>
+			</Style>
+			<Style x:Key="Theme1Sort" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort1.png}"/>
+			</Style>
+
+			<Color x:Key="Theme2">#3e5c4d</Color>
+			<Color x:Key="Theme22">#57826d</Color>
+			<Color x:Key="Theme2Text">#efefef</Color>
+			<Style x:Key="Theme2Shuffle" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle2.png}"/>
+			</Style>
+			<Style x:Key="Theme2Edit" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit2.png}"/>
+			</Style>
+			<Style x:Key="Theme2Sort" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort2.png}"/>
+			</Style>
+
+			<Color x:Key="Theme3">#232526</Color>
+			<Color x:Key="Theme32">#2c2c2c</Color>
+			<Color x:Key="Theme3Text">#efefef</Color>
+			<Style x:Key="Theme3Shuffle" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle3.png}"/>
+			</Style>
+			<Style x:Key="Theme3Edit" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit3.png}"/>
+			</Style>
+			<Style x:Key="Theme3Sort" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort3.png}"/>
+			</Style>
+
+			<Color x:Key="Theme4">#9d4848</Color>
+			<Color x:Key="Theme42">#d06060</Color>
+			<Color x:Key="Theme4Text">#efefef</Color>
+			<Style x:Key="Theme4Shuffle" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle4.png}"/>
+			</Style>
+			<Style x:Key="Theme4Edit" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit4.png}"/>
+			</Style>
+			<Style x:Key="Theme4Sort" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort4.png}"/>         
+			</Style>
+			
+			<Color x:Key="Theme5">#40263e</Color>
+			<Color x:Key="Theme52">#663c63</Color>
+			<Color x:Key="Theme5Text">#efefef</Color>
+			<Style x:Key="Theme5Shuffle" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.shuffle5.png}"/>
+			</Style>
+			<Style x:Key="Theme5Edit" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.edit5.png}"/>
+			</Style>
+			<Style x:Key="Theme5Sort" TargetType="ImageButton">
+				<Setter Property="Source" Value="{src:ImageResource Batch.Images.sort5.png}"/>
+			</Style>
+			
+			<Style x:Key="Separator" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="3"/>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+				<Setter Property="Color" Value="Black"/>
+				<Setter Property="Margin" Value="0, 5"/>
+				<Setter Property="Opacity" Value="0.2"/>
+			</Style>
+
+			<Style x:Key="Header" TargetType="Label">
+				<Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+				<Setter Property="Margin" Value="15, 0"/>
+				<Setter Property="FontSize" Value="25"/>
+			</Style>
+		</ResourceDictionary>
+    </Application.Resources>
+</Application>

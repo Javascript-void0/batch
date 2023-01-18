@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:Batch.ViewModels"
+             x:Class="Batch.Views.HomePage"
+			 Title="Home">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<vm:ArrayListToStringConverter x:Key="arrToStr"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<NavigationPage.TitleView>
+		<StackLayout Orientation="Horizontal">
+			<Label Text="Home" FontSize="20" FontFamily="Jost" TextColor="#efefef" HorizontalOptions="StartAndExpand"/>
+			<Label x:Name="numDecks" Text="12 Decks" FontSize="20" FontFamily="Jost" TextColor="#efefef" HorizontalOptions="End" HorizontalTextAlignment="end" Padding="0, 0, 20, 0"/>
+		</StackLayout>
+	</NavigationPage.TitleView>
+	
+    <ContentPage.Content>
+		<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+						BackgroundColor="#efefef">
+			<BoxView AbsoluteLayout.LayoutBounds="0, 0, 1, 0.11" AbsoluteLayout.LayoutFlags="All"
+					 BackgroundColor="{DynamicResource BackgroundColor}"/>
+
+			<!--Page-->
+			<StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="0, 0, 0, 50">
+				<Grid Padding="20">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="40"/>
+					</Grid.ColumnDefinitions>
+					<Frame Grid.Column="0" BackgroundColor="#efefef" CornerRadius="100" Margin="5, 10">
+						<SearchBar x:Name="searchBar" TextColor="{DynamicResource BackgroundColor}" CancelButtonColor="{DynamicResource BackgroundColor}" TextChanged="SearchBar_TextChanged" Placeholder="Search" FontFamily="Jost"/>
+					</Frame>
+					<Button Grid.Column="1" x:Name="dotsHome" Text="⋮" Clicked="dotsClicked" FontSize="35" FontAttributes="Bold" FontFamily="Jost"
+							CornerRadius="100" Padding="0, 0, 0, 5" BackgroundColor="Transparent"/>
+				</Grid>
+
+				<ListView x:Name="decksList" ItemsSource="{Binding Items}" Margin="0, 40, 0, 0"
+						  HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="ListView_ItemTapped">
+					<ListView.Footer>
+						<!--padding on bottom of list-->
+						<BoxView HeightRequest="100" BackgroundColor="Transparent"/>
+					</ListView.Footer>
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<AbsoluteLayout>
+									<!--card shadow-->
+									<BoxView AbsoluteLayout.LayoutBounds="0.6, 1, 0.8, 170" 
+											 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+											 BackgroundColor="Black" Margin="0, 10, 0, 0" CornerRadius="15" Opacity="0.1"/>
+									<Frame AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.8, 180" 
+										   AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+										   HeightRequest="100" Margin="0, 10, 0, 10"
+										   BackgroundColor="White" CornerRadius="10" Padding="0">
+										<AbsoluteLayout>
+											<!--right accent-->
+											<BoxView AbsoluteLayout.LayoutBounds="1, 1, 0.1, 1" AbsoluteLayout.LayoutFlags="All"
+													 BackgroundColor="{DynamicResource BackgroundColor2}" Opacity="0.3"/>
+											<StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="20">
+												<StackLayout Orientation="Horizontal">
+													<Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" FontFamily="JostBold"
+												       TextColor="{DynamicResource BackgroundColor}" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation"/>
+													<Label Text="{Binding Created}" FontSize="14" TextColor="Gray" LineBreakMode="NoWrap" MinimumWidthRequest="100" Rotation="90" Padding="20, 0, 0, 0" FontFamily="Jost"/>
+												</StackLayout>
+												<Label Text="{Binding Tags, StringFormat='Tags: {0}', Converter={StaticResource arrToStr}}" FontSize="15" FontFamily="Jost"
+												   TextColor="{DynamicResource BackgroundColor}"/>
+												<StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+													<ImageButton BackgroundColor="White" Clicked="shuffleClicked" Padding="13"
+														BindingContext="{Binding .}" Style="{DynamicResource ShuffleIcon}"
+														HeightRequest="50" WidthRequest="50" CornerRadius="100"
+														VerticalOptions="End" HorizontalOptions="EndAndExpand"/>
+												</StackLayout>
+											</StackLayout>
+										</AbsoluteLayout>
+									</Frame>
+								</AbsoluteLayout>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+
+			</StackLayout>
+
+			<Frame x:Name="noDecks" BackgroundColor="Transparent" IsVisible="false"
+				   AbsoluteLayout.LayoutBounds="0.8, 0.9, 400, 0.2" AbsoluteLayout.LayoutFlags="PositionProportional, HeightProportional">
+				<Label Text="Welcome! Create your first deck by pressing the '+'" FontSize="20"
+					   FontFamily="Jost" TextColor="{DynamicResource BackgroundColor}"/>
+			</Frame>
+
+			<!--Floating Button-->
+			<Button x:Name="newDeckButton" Text="+" Clicked="New_Deck_Clicked" FontSize="35" FontAttributes="Bold" FontFamily="Jost"
+					AbsoluteLayout.LayoutBounds="0.95, 0.95, 80, 80" AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0"
+					CornerRadius="100" Padding="0, 0, 0, 5" BackgroundColor="{DynamicResource BackgroundColor2}"/>
+
+			<!--floating menu--><!--
+			<StackLayout x:Name="floatMenuDim" IsVisible="false"
+				   AbsoluteLayout.LayoutBounds="1, 1, 1, 1" AbsoluteLayout.LayoutFlags="All">
+				<StackLayout.GestureRecognizers>
+					<TapGestureRecognizer Tapped="closeFloatMenu"/>
+				</StackLayout.GestureRecognizers>
+			</StackLayout>
+			<Frame x:Name="floatMenu" IsVisible="false"
+				   AbsoluteLayout.LayoutBounds="0.95, 0.13, 250, 250" AbsoluteLayout.LayoutFlags="PositionProportional">
+				<StackLayout>
+					<Label Text="Sort By:" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold"/>
+					<BoxView Style="{StaticResource Separator}"/>
+					<Button Text="Alphabetical" BackgroundColor="Transparent" TextColor="{DynamicResource BackgroundColor2}" Clicked="sortAlphabetical"/>
+					<Button Text="Created" BackgroundColor="Transparent" TextColor="{DynamicResource BackgroundColor2}" Clicked="sortCreated"/>
+					<Button Text="Recent" BackgroundColor="Transparent" TextColor="{DynamicResource BackgroundColor2}" Clicked="sortRecent"/>
+					--><!--<Label Text="Tags" TextColor="{DynamicResource BackgroundColor}" FontAttributes="Bold"/>
+					<BoxView Style="{StaticResource Separator}"/>
+					<ListView x:Name="tagsList" ItemsSource="{Binding Tags}">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<StackLayout Orientation="Horizontal">
+										<CheckBox Color="{DynamicResource BackgroundColor2}" HorizontalOptions="Start"/>
+										<Label Text="{Binding Name, StringFormat='# {0}'}" TextColor="{DynamicResource BackgroundColor}"
+											   HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+									</StackLayout>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>--><!--
+				</StackLayout>
+			</Frame>-->
+			
+		</AbsoluteLayout>
+	</ContentPage.Content>
+</ContentPage>

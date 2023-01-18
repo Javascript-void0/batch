@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:src="clr-namespace:Batch.ViewModels"
+             x:Class="Batch.Views.AboutPage"
+			 Title="About">
+    <ContentPage.Content>
+        <StackLayout>
+			<Image Source="{src:ImageResource Batch.Images.rick.png}"/>
+			<Label Text="icons from https://tabler-icons.io"/>
+			<Label Text="made by vincent"/>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
