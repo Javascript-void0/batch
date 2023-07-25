@@ -1,5 +1,7 @@
 # Batch: Flashcard App for Android <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/xamarin-logo.png" height="30"><img src="https://portjefflibrary.org/wp-content/uploads/2015/11/android-logo-transparent-background.png" height="30" style="padding-right: 0.5rem;"><img src="https://seeklogo.com/images/C/c-sharp-c-logo-02F17714BA-seeklogo.com.png" height="30">
 
+<p align="center" style="font-size: 10px">22-23 App Development Project</p>
+
 Missing ~~some~~ a lot of features but it runs at least. Supports a canvas for handwriting I guess...
 
 Packages Used
